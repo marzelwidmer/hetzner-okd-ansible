@@ -13,3 +13,45 @@
     repo: https://github.com/marzelwidmer/installcentos.git
     dest: $HOME/installcentos
     version: wip
+
+- name: populate /etc/environment
+  lineinfile:
+    dest: "/etc/environment"
+    state: present
+    regexp: "^{{ item.key }}"
+    line: "{{ item.key }}={{ item.value}}"
+  with_items: "{{ os_environment }}"
+
+- name: Install OKD Cluster
+  shell: "curl https://raw.githubusercontent.com/marzelwidmer/installcentos/wip/install-openshift.sh | INTERACTIVE=false /bin/bash"
+
+# - hosts: dev
+#   tasks:
+# - name: Echo okd_domain_var
+#   shell: "echo $DOMAIN"
+#   environment:
+#     DOMAIN: {{ okd_domain_var }}
+
+# - name: Echo okd_domain_var
+#     shell: "echo $MY_ENV_VARIABLE"
+
+
+# - name: Set Domain variable
+#   command: export DOMAIN={{ okd_domain_var }}
+
+
+# - name: GET Domain variable
+#   command: echo {{ okd_domain_var }}
+
+#   curl https://raw.githubusercontent.com/marzelwidmer/installcentos/wip/install-openshift.sh | INTERACTIVE=false /bin/bash
+
+# # - hosts: dev
+# #   tasks:
+# - name: Echo okd_domain_var
+#   shell: "echo $DOMAIN"
+#   environment:
+#     DOMAIN: {{ okd_domain_var }}
+
+# - name: Echo okd_domain_var
+#     shell: "echo $MY_ENV_VARIABLE"
+

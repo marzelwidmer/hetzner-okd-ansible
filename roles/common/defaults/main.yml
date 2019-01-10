@@ -1,0 +1,15 @@
+---
+os_environment:
+  - key: DOMAIN 
+    value : k8s-monkey.ch 
+  - key: USERNAME 
+    value : admin
+  - key: PASSWORD 
+    value : admin
+
+
+ 
+
+
+
+

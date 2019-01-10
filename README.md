@@ -9,6 +9,14 @@ ansible-playbook -i inventory.ini okd.yml --syntax-check
 
 
 
+export DOMAIN=k8s-monkey.ch
+export USERNAME=admin
+export PASSWORD=admin
+
+
+curl https://raw.githubusercontent.com/marzelwidmer/installcentos/wip/install-openshift.sh | INTERACTIVE=false /bin/bash
+
+
 
 
 
