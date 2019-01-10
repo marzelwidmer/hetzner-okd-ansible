@@ -22,8 +22,32 @@
     line: "{{ item.key }}={{ item.value}}"
   with_items: "{{ os_environment }}"
 
+- name: Echo DOMAIN
+  shell: "echo $DOMAIN"
+
+- name: Change in installcentos/ directory
+  command: "cd installcentos/"
+
+- name: List env
+  shell: "env"
+
 - name: Install OKD Cluster
-  shell: "curl https://raw.githubusercontent.com/marzelwidmer/installcentos/wip/install-openshift.sh | INTERACTIVE=false /bin/bash"
+  shell: "./install-openshift.sh | INTERACTIVE=false /bin/bash"
+
+# - name: Install OKD Cluster
+#   shell: "curl https://raw.githubusercontent.com/marzelwidmer/installcentos/wip/install-openshift.sh | INTERACTIVE=false /bin/bash"
+
+
+
+# - name: SET DOMAIN
+#   command: "DOMAIN=$DOMAIN"
+
+# - name: SET USERNAME
+#   command: "DOMAIN={os_environment.USERNAME}"
+
+
+# - name: SET PASSWORD
+#   command: "DOMAIN={os_environment.PASSWORD}"
 
 # - hosts: dev
 #   tasks:
