@@ -1,0 +1,15 @@
+---
+- name: Install packages
+  yum:
+    name:
+      - git
+      - lsof
+    state: present
+
+- name: Check Git version
+  command: git version
+
+- git:
+    repo: https://github.com/marzelwidmer/installcentos.git
+    dest: $HOME/installcentos
+    version: wip

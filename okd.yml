@@ -1,0 +1,9 @@
+---
+- name: apply common configuration to all nodes
+  hosts: hetzner-vm
+  user: root
+
+  roles:
+    - {role: 'common', tags: 'common'}
+
+ 
