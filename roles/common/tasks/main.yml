@@ -14,25 +14,25 @@
     dest: $HOME/installcentos
     version: wip
 
-- name: populate /etc/environment
-  lineinfile:
-    dest: "/etc/environment"
-    state: present
-    regexp: "^{{ item.key }}"
-    line: "{{ item.key }}={{ item.value}}"
-  with_items: "{{ os_environment }}"
+# - name: populate /etc/environment
+#   lineinfile:
+#     dest: "/etc/environment"
+#     state: present
+#     regexp: "^{{ item.key }}"
+#     line: "{{ item.key }}={{ item.value}}"
+#   with_items: "{{ os_environment }}"
 
-- name: Echo DOMAIN
-  shell: "echo $DOMAIN"
+# - name: Echo DOMAIN
+#   shell: "echo $DOMAIN"
 
-- name: Change in installcentos/ directory
-  command: "cd installcentos/"
+# - name: Change in installcentos/ directory
+#   command: "cd installcentos/"
 
-- name: List env
-  shell: "env"
+# - name: List env
+#   shell: "env"
 
-- name: Install OKD Cluster
-  shell: "./install-openshift.sh | INTERACTIVE=false /bin/bash"
+# - name: Install OKD Cluster
+#   shell: "./install-openshift.sh | INTERACTIVE=false /bin/bash"
 
 # - name: Install OKD Cluster
 #   shell: "curl https://raw.githubusercontent.com/marzelwidmer/installcentos/wip/install-openshift.sh | INTERACTIVE=false /bin/bash"
