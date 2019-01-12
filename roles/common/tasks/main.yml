@@ -1,81 +1,33 @@
 ---
-- name: Install packages
+- name: Install Git applications
   yum:
-    name:
-      - git
-      - lsof
-    state: present
+    name: git
+    state: latest
 
 - name: Check Git version
   command: git version
 
-- git:
-    repo: https://github.com/marzelwidmer/installcentos.git
-    dest: $HOME/installcentos
-    version: wip
+- name: Clone OKD installation repository
+  ignore_errors: yes
+  command: git clone https://github.com/gshipley/installcentos.git
 
-# - name: populate /etc/environment
-#   lineinfile:
-#     dest: "/etc/environment"
-#     state: present
-#     regexp: "^{{ item.key }}"
-#     line: "{{ item.key }}={{ item.value}}"
-#   with_items: "{{ os_environment }}"
+- name: Change to OKD installation repository
+  command: cd installcentos
 
-# - name: Echo DOMAIN
-#   shell: "echo $DOMAIN"
+- name: Download install script from GitHub
+  shell: |
+       curl https://raw.githubusercontent.com/gshipley/installcentos/master/install-openshift.sh  --output $HOME/installcentos/install-openshift.sh
 
-# - name: Change in installcentos/ directory
-#   command: "cd installcentos/"
-
-# - name: List env
-#   shell: "env"
-
-# - name: Install OKD Cluster
-#   shell: "./install-openshift.sh | INTERACTIVE=false /bin/bash"
-
-# - name: Install OKD Cluster
-#   shell: "curl https://raw.githubusercontent.com/marzelwidmer/installcentos/wip/install-openshift.sh | INTERACTIVE=false /bin/bash"
-
-
-
-# - name: SET DOMAIN
-#   command: "DOMAIN=$DOMAIN"
-
-# - name: SET USERNAME
-#   command: "DOMAIN={os_environment.USERNAME}"
-
-
-# - name: SET PASSWORD
-#   command: "DOMAIN={os_environment.PASSWORD}"
-
-# - hosts: dev
-#   tasks:
-# - name: Echo okd_domain_var
-#   shell: "echo $DOMAIN"
-#   environment:
-#     DOMAIN: {{ okd_domain_var }}
-
-# - name: Echo okd_domain_var
-#     shell: "echo $MY_ENV_VARIABLE"
-
-
-# - name: Set Domain variable
-#   command: export DOMAIN={{ okd_domain_var }}
-
-
-# - name: GET Domain variable
-#   command: echo {{ okd_domain_var }}
-
-#   curl https://raw.githubusercontent.com/marzelwidmer/installcentos/wip/install-openshift.sh | INTERACTIVE=false /bin/bash
-
-# # - hosts: dev
-# #   tasks:
-# - name: Echo okd_domain_var
-#   shell: "echo $DOMAIN"
-#   environment:
-#     DOMAIN: {{ okd_domain_var }}
-
-# - name: Echo okd_domain_var
-#     shell: "echo $MY_ENV_VARIABLE"
-
+- name: Update Install Script with 
+  lineinfile:
+    dest: /$HOME/installcentos/install-openshift.sh
+    line: "{{ item.line }}"
+    insertafter: '#!/bin/bash'
+  with_items:
+    - {  line: 'export PASSWORD="{{okd_admin_password}}"' }
+    - {  line: 'export USERNAME="{{okd_admin_username}}"' }
+    - {  line: 'export DOMAIN="{{okd_domain}}"' }
+  
+- name: Install Openshift
+  shell: |
+       /$HOME/installcentos/install-openshift.sh | INTERACTIVE=false /bin/bash

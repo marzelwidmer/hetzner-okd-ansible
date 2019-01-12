@@ -1,23 +1,29 @@
 # hetzner-okd-ansible
 
+Create a hetzner VM 
+```
+ hcloud server create --name <YOUR_DOMAIN> --type cx31 --image centos-7 --ssh-key <YOUR_HETZNER_SSH_KEY> --datacenter hel1-dc2
+ ```
+
+Update your domain stuff in the _okd.yml_  file.
+
+```
+  vars: 
+    - okd_domain: "<YOUR_DOMAIN>"
+    - okd_admin_username: "<YOUR_ADMIN_USER>"
+    - okd_admin_password: "<YOUR_ADMIN_USER_PASSWORD>"
+```    
+
 
 ## Playbook syntax check
 ```
 ansible-playbook -i inventory.ini okd.yml --syntax-check
 ```
 
-
-
-
-export DOMAIN=k8s-monkey.ch
-export USERNAME=admin
-export PASSWORD=admin
-
-
-curl https://raw.githubusercontent.com/marzelwidmer/installcentos/wip/install-openshift.sh | INTERACTIVE=false /bin/bash
-
-
-
+## Playbook 
+```
+ansible-playbook -i inventory.ini okd.yml
+```
 
 
 # Ansible 
@@ -30,6 +36,7 @@ ansible hetzner-vm -a uptime
 ```
 ansible hetzner-vm -m ping
 ```
+
 
 # Ansible Long version
 # Ping
