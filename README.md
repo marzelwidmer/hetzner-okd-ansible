@@ -57,3 +57,21 @@ ansible --connection local -i inventory.ini hetzner-vm -a uptime --verbose --use
 ```
 ansible --connection local -i inventory.ini local -a 'hcloud server list' --verbose --user root
 ```
+
+# Openshift
+## Create first Project
+```
+oc new-project appdev \
+         --description="Development Stage" \
+         --display-name="Development"
+```
+
+## Deploy Spring Boot App with S2i
+```
+oc new-app codecentric/springboot-maven3-centos~https://github.com/marzelwidmer/spring-openshift.git \
+                                                 --name=springboot-app \
+                                                 -l app=springboot  \
+                                                 -n appdev
+```
+
+
