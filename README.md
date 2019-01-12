@@ -14,6 +14,10 @@ Update your domain stuff in the _okd.yml_  file.
     - okd_admin_password: "<YOUR_ADMIN_USER_PASSWORD>"
 ```    
 
+Check _ansible.cfg_ file your private key file have the same name, otherwise update it
+``
+private_key_file =  ~/.ssh/id_rsa_hetzner
+```
 
 ## Playbook syntax check
 ```
