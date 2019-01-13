@@ -10,9 +10,9 @@ Update your domain stuff in the _okd.yml_  file.
 
 ```
   vars: 
-    - okd_domain: "<YOUR_DOMAIN>"
-    - okd_admin_username: "<YOUR_ADMIN_USER>"
-    - okd_admin_password: "<YOUR_ADMIN_USER_PASSWORD>"
+    - okd_domain: "YOUR_DOMAIN"
+    - okd_admin_username: "YOUR_ADMIN_USER"
+    - okd_admin_password: "YOUR_ADMIN_USER_PASSWORD"
 ```    
 
 Check _ansible.cfg_ file your private key file have the same name, otherwise update it
