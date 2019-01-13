@@ -25,6 +25,7 @@
     export DOMAIN={{okd_domain}}
     export USERNAME={{okd_admin_username}}
     export PASSWORD={{okd_admin_password}}
+    export API_PORT={{okd_api_port}}
     export INTERACTIVE="false"
 
     ./install-openshift.sh > install.log  
