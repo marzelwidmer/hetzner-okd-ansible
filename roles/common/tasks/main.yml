@@ -11,23 +11,25 @@
   ignore_errors: yes
   command: git clone https://github.com/gshipley/installcentos.git
 
-- name: Change to OKD installation repository
-  command: cd installcentos
+- name: Transfer the installation script
+  copy: src=install-openshift.sh dest=$HOME/installcentos/ mode=0777
 
-- name: Download install script from GitHub
-  shell: |
-       curl https://raw.githubusercontent.com/gshipley/installcentos/master/install-openshift.sh  --output $HOME/installcentos/install-openshift.sh
+# - name: Download install-openshift.sh script from GitHub
+#   shell: |
+#        curl https://raw.githubusercontent.com/gshipley/installcentos/master/install-openshift.sh  --output $HOME/installcentos/install-openshift.sh
 
-- name: Update Install Script with 
-  lineinfile:
-    dest: /$HOME/installcentos/install-openshift.sh
-    line: "{{ item.line }}"
-    insertafter: '#!/bin/bash'
-  with_items:
-    - {  line: 'export PASSWORD="{{okd_admin_password}}"' }
-    - {  line: 'export USERNAME="{{okd_admin_username}}"' }
-    - {  line: 'export DOMAIN="{{okd_domain}}"' }
-  
-- name: Install Openshift
+- name: Install OKD on Hetzner
   shell: |
-       /$HOME/installcentos/install-openshift.sh | INTERACTIVE=false /bin/bash
+    cd $HOME/installcentos/
+
+    export DOMAIN={{okd_domain}}
+    export USERNAME={{okd_admin_username}}
+    export PASSWORD={{okd_admin_password}}
+    export INTERACTIVE="false"
+
+    ./install-openshift.sh > install.log  
+
+- name: Read installation log file
+  shell: |
+        cat $HOME/installcentos/install.log  
+
