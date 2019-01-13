@@ -20,9 +20,13 @@ Check _ansible.cfg_ file your private key file have the same name, otherwise upd
 private_key_file =  ~/.ssh/id_rsa_hetzner
 ```
 ## Playbook 
+
+### Call playbook
 ```
 ansible-playbook -i inventory.ini okd.yml
 ```
+
+Wait for the summary...
 
 ```
 Sunday 13 January 2019  09:45:58 +0100 (0:00:07.390)       0:27:30.351 ********
@@ -32,13 +36,13 @@ common : Install OKD on Hetzner -------------------------------------- 1631.71s
 common : Read installation log file ------------------------------------- 7.39s
 ~//hetzner/hetzner-okd-ansible/roles/common/tasks/main.yml:32 -----------------
 common : Install Git applications --------------------------------------- 3.89s
-~//hetzner/hetzner-okd-ansible/roles/common/tasks/main.yml:2 ------------------
+~/hetzner/hetzner-okd-ansible/roles/common/tasks/main.yml:2 -------------------
 common : Transfer the installation script ------------------------------- 3.04s
-~//hetzner/hetzner-okd-ansible/roles/common/tasks/main.yml:14 -----------------
+~/hetzner/hetzner-okd-ansible/roles/common/tasks/main.yml:14 ------------------
 common : Clone OKD installation repository ------------------------------ 2.72s
-~//hetzner/hetzner-okd-ansible/roles/common/tasks/main.yml:10 -----------------
+~/hetzner/hetzner-okd-ansible/roles/common/tasks/main.yml:10 ------------------
 common : Check Git version ---------------------------------------------- 1.47s
-~//hetzner/hetzner-okd-ansible/roles/common/tasks/main.yml:7 ------------------
+~/hetzner/hetzner-okd-ansible/roles/common/tasks/main.yml:7 -------------------
 ```
 
 
