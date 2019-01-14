@@ -82,7 +82,7 @@ ansible --connection local -i inventory.ini local -a 'hcloud server list' --verb
 # Openshift
 ## Create first Project
 ```
-oc new-project appdev \
+oc new-project dev \
          --description="Development Stage" \
          --display-name="Development"
 ```
@@ -92,7 +92,7 @@ oc new-project appdev \
 oc new-app codecentric/springboot-maven3-centos~https://github.com/marzelwidmer/spring-openshift.git \
                                                  --name=springboot-app \
                                                  -l app=springboot  \
-                                                 -n appdev
+                                                 -n dev
 ```
 
 
