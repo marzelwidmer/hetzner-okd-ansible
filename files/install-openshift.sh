@@ -138,6 +138,8 @@ fi
 
 curl -o inventory.download $SCRIPT_REPO/inventory.ini
 envsubst < inventory.download > inventory.ini
+# https://github.com/openshift/openshift-ansible/issues/11069
+sed -i -e "s/^openshift_node_kubelet_args/#openshift_node_kubelet_args/"  inventory.ini
 
 # add proxy in inventory.ini if proxy variables are set
 if [ ! -z "${HTTPS_PROXY:-${https_proxy:-${HTTP_PROXY:-${http_proxy}}}}" ]; then
