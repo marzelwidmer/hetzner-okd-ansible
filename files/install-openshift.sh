@@ -88,6 +88,7 @@ yum -y --enablerepo=epel install ansible.rpm
 
 [ ! -d openshift-ansible ] && git clone https://github.com/openshift/openshift-ansible.git
 
+# cd openshift-ansible && git fetch && git checkout release-${VERSION} && git checkout e7f05191a1 && cd ..
 cd openshift-ansible && git fetch && git checkout release-${VERSION} && cd ..
 
 cat <<EOD > /etc/hosts
