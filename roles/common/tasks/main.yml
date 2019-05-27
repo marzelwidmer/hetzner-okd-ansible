@@ -22,15 +22,15 @@
   shell: |
     cd $HOME/installcentos/
 
+    export PVS=true
     export DOMAIN={{okd_domain}}
     export USERNAME={{okd_admin_username}}
     export PASSWORD={{okd_admin_password}}
     export API_PORT={{okd_api_port}}
     export INTERACTIVE="false"
 
-    ./install-openshift.sh > install.log  
+    ./install-openshift.sh > install.log
 
 - name: Read installation log file
   shell: |
-        cat $HOME/installcentos/install.log  
-
+        cat $HOME/installcentos/install.log
