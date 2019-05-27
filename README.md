@@ -1,6 +1,6 @@
 # hetzner-okd-ansible
 
-Create a hetzner VM with the CLI https://github.com/hetznercloud/cli 
+Create a hetzner VM with the CLI https://github.com/hetznercloud/cli
 
 ```
  hcloud server create --name <YOUR_DOMAIN> --type cx31 --image centos-7 --ssh-key <YOUR_HETZNER_SSH_KEY> --datacenter hel1-dc2
@@ -9,7 +9,7 @@ Create a hetzner VM with the CLI https://github.com/hetznercloud/cli
 Update your domain stuff in the _okd.yml_  file.
 
 ```
-  vars: 
+  vars:
     - okd_domain: "YOUR_DOMAIN"
     - okd_admin_username: "YOUR_ADMIN_USER"
     - okd_admin_password: "YOUR_ADMIN_USER_PASSWORD"
@@ -19,7 +19,7 @@ Check _ansible.cfg_ file your private key file have the same name, otherwise upd
 ```
 private_key_file =  ~/.ssh/id_rsa_hetzner
 ```
-## Playbook 
+## Playbook
 
 ### Call playbook
 ```
@@ -65,7 +65,7 @@ ansible hetzner-vm -m ping
 ```
 ansible -i inventory.ini hetzner-vm -m ping --verbose --user root
 ```
-### Call localhost with ansible 
+### Call localhost with ansible
 #### Localhost Ping
 ```
 ansible --connection local -i inventory.ini hetzner-vm -m ping --verbose --user root
@@ -94,5 +94,3 @@ oc new-app codecentric/springboot-maven3-centos~https://github.com/marzelwidmer/
                                                  -l app=springboot  \
                                                  -n dev
 ```
-
-

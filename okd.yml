@@ -4,11 +4,12 @@
   user: root
   become: yes
   gather_facts: no
-  vars: 
-    - okd_domain: "YOUR_DOMAIN"
-    - okd_admin_username: "YOUR_ADMIN_USER"
-    - okd_admin_password: "YOUR_ADMIN_USER_PASSWORD"
+  vars:
+    - okd_domain: "keepcalm.ch"
+    - okd_admin_username: "john"
+    - okd_admin_password: "Welcome1_"
     - okd_api_port: "8443"
 
   roles:
     - { role: "common", tags: "common" }
+    

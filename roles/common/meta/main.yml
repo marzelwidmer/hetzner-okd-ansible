@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Marcel Widmer
-  description: 
-  company: k8s-monkey.ch
+  description:
+  company: keepcalm.ch
   license: license (GPLv2, CC-BY, etc)
   min_ansible_version: 2.7
