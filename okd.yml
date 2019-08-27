@@ -5,11 +5,10 @@
   become: yes
   gather_facts: no
   vars:
-    - okd_domain: "keepcalm.ch"
-    - okd_admin_username: "john"
-    - okd_admin_password: "Welcome1_"
+    - okd_domain: "c3smonkey.ch"
+    - okd_admin_username: "monkey"
+    - okd_admin_password: "monkeyPassword"
     - okd_api_port: "8443"
 
   roles:
     - { role: "common", tags: "common" }
-    

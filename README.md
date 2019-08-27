@@ -3,7 +3,12 @@
 Create a hetzner VM with the CLI https://github.com/hetznercloud/cli
 
 ```
- hcloud server create --name <YOUR_DOMAIN> --type cx31 --image centos-7 --ssh-key <YOUR_HETZNER_SSH_KEY> --datacenter hel1-dc2
+ hcloud server create --name <YOUR_DOMAIN> --type cx41 --image centos-7 --ssh-key <YOUR_HETZNER_SSH_KEY> --datacenter hel1-dc2
+ ```
+ if you have allready one and want it just rest and re-install the cluster you can user the following command.
+
+ ```
+hcloud server rebuild c3smonkey.ch --image centos-7
  ```
 
 Update your domain stuff in the _okd.yml_  file.
