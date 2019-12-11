@@ -227,6 +227,9 @@ ansible-playbook -i inventory.ini openshift-ansible/playbooks/deploy_cluster.yml
 htpasswd -b /etc/origin/master/htpasswd ${USERNAME} ${PASSWORD}
 oc adm policy add-cluster-role-to-user cluster-admin ${USERNAME}
 
+htpasswd -b /etc/origin/master/htpasswd developer developer
+
+
 if [ "$PVS" = "true" ]; then
 
 	curl -o vol.yaml $SCRIPT_REPO/vol.yaml
