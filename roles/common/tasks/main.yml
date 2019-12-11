@@ -9,7 +9,7 @@
 
 - name: Clone OKD installation repository
   ignore_errors: yes
-  command: git clone https://github.com/gshipley/installcentos.git
+  command: git clone https://github.com/okd-community-install/installcentos.git
 
 - name: Transfer the installation script
   copy: src=install-openshift.sh dest=$HOME/installcentos/ mode=0777
